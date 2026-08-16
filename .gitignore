@@ -1,0 +1,8 @@
+data/
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/
+.idea/
+ML_Assignment_2.pdf
