@@ -41,8 +41,7 @@ with the Streamlit app's upload feature.
 
 ## c. GitHub Repository Link
 
-> **TODO:** Replace with your actual repository URL after pushing, e.g.
-> `https://github.com/<your-username>/census-income-classifier`
+[https://github.com/agarwalkartik/ml_assignment_2](https://github.com/agarwalkartik/ml_assignment_2)
 
 ## d. Models Used
 
@@ -114,6 +113,5 @@ streamlit run app.py
 
 ## Live Links
 
-- **GitHub Repository:** _TODO — add link_
-- **Live Streamlit App:** _TODO — add link after deploying to Streamlit
-  Community Cloud_
+- **GitHub Repository:** [https://github.com/agarwalkartik/ml_assignment_2](https://github.com/agarwalkartik/ml_assignment_2)
+- **Live Streamlit App:** [https://mlassignment2-kf2s4xdj2rb9iamzc3qgyd.streamlit.app/](https://mlassignment2-kf2s4xdj2rb9iamzc3qgyd.streamlit.app/)
