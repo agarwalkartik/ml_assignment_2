@@ -101,18 +101,18 @@ with st.sidebar:
     )
 
 if uploaded_file is None:
-    st.info("👈 Upload a test CSV from the sidebar to run predictions. Using `test_data.csv` from the repo as a preview below.")
+    st.info("👈 Showing results on the repo's `test_data.csv` by default — upload your own CSV in the sidebar to override.")
     default_path = os.path.join(BASE_DIR, "test_data.csv")
-    if os.path.exists(default_path):
-        preview_df = pd.read_csv(default_path)
-        st.dataframe(preview_df.head(10), use_container_width=True)
-    st.stop()
-
-try:
-    data = pd.read_csv(uploaded_file)
-except Exception as e:
-    st.error(f"Could not read CSV: {e}")
-    st.stop()
+    if not os.path.exists(default_path):
+        st.error(f"Default test data not found at {default_path}")
+        st.stop()
+    data = pd.read_csv(default_path)
+else:
+    try:
+        data = pd.read_csv(uploaded_file)
+    except Exception as e:
+        st.error(f"Could not read CSV: {e}")
+        st.stop()
 
 missing_cols = [c for c in FEATURE_COLUMNS + [TARGET] if c not in data.columns]
 if missing_cols:
