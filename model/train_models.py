@@ -8,6 +8,7 @@ Streamlit app, and writes a held-out test split to test_data.csv for submission.
 
 import json
 import os
+import urllib.request
 
 import joblib
 import numpy as np
@@ -51,8 +52,20 @@ CATEGORICAL_FEATURES = [
 ]
 TARGET = "income"
 
+UCI_BASE_URL = "https://archive.ics.uci.edu/ml/machine-learning-databases/adult"
+
+
+def ensure_raw_data():
+    os.makedirs(DATA_DIR, exist_ok=True)
+    for fname in ("adult.data", "adult.test"):
+        fpath = os.path.join(DATA_DIR, fname)
+        if not os.path.exists(fpath):
+            print(f"{fname} not found locally, downloading from UCI...")
+            urllib.request.urlretrieve(f"{UCI_BASE_URL}/{fname}", fpath)
+
 
 def load_raw():
+    ensure_raw_data()
     train = pd.read_csv(
         os.path.join(DATA_DIR, "adult.data"),
         names=COLUMNS, sep=r",\s*", engine="python", na_values="?",
